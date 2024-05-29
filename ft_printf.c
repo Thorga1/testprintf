@@ -6,7 +6,7 @@
 /*   By: tordner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:16:31 by tordner           #+#    #+#             */
-/*   Updated: 2024/05/29 14:11:26 by tordner          ###   ########.fr       */
+/*   Updated: 2024/05/29 14:55:22 by tordner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 	int		count;
 
+	if (format == 0)
+		return (-1);
 	count = 0;
 	va_start(ap, format);
 	count = parse_buff(format, ap);
