@@ -6,19 +6,31 @@
 /*   By: tordner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:16:31 by tordner           #+#    #+#             */
-/*   Updated: 2024/05/29 14:55:22 by tordner          ###   ########.fr       */
+/*   Updated: 2024/05/30 11:57:44 by tordner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void	create_tab(int (*convert[5])(char, va_list))
+{
+	convert[0] = &check_char;
+	convert[1] = &check_str;
+	convert[2] = &check_int;
+	convert[3] = &check_unsigned;
+	convert[4] = &check_hexa;
+	convert[5] = &check_ptr;
+	return ;
+}
 
 int	parse_buff(const char *format, va_list ap)
 {
 	int		i;
 	int		j;
 	int		count;
-	t_conv	convert[] = { check_char, check_str, check_int, check_unsigned, check_hexa, check_ptr };
+	t_conv	convert[5];
 
+	create_tab(convert);
 	i = 0;
 	j = 0;
 	count = 0;
@@ -32,10 +44,7 @@ int	parse_buff(const char *format, va_list ap)
 			i++;
 		}
 		else
-		{
-			write(1, &format[i], 1);
-			count++;
-		}
+			count += write(1, &format[i], 1);
 		i++;
 	}
 	return (count);

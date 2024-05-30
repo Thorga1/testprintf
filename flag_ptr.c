@@ -6,7 +6,7 @@
 /*   By: tordner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:03:15 by tordner           #+#    #+#             */
-/*   Updated: 2024/05/29 14:21:50 by tordner          ###   ########.fr       */
+/*   Updated: 2024/05/30 11:32:04 by tordner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	check_ptr(char c, va_list ap)
 	{
 		x = va_arg(ap, unsigned long long);
 		if (x == 0)
-		{	
+		{
 			count += write(1, "(nil)", 5);
 			return (count);
 		}
